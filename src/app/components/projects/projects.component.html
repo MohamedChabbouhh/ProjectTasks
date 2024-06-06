@@ -1,0 +1,36 @@
+<p>projects works!</p>
+<form [formGroup]="projectform">
+
+  <input type="text" placeholder="Nom projet" [value]="prjt?.name" formControlName="nomeq">
+
+  <input type="text" placeholder="Date de création" [value]="prjt?.date_creation" formControlName="datecr">
+
+  @if (update){
+    <button type="submit" (click)="upproject(prjt!.id)" >Modifier</button>
+  } @else {
+    <button type="submit" (click)="addpr()" >Enregistrer</button>
+  }
+</form>
+<table>
+  <thead>
+  <tr>
+    <td>Nom Projet</td>
+    <td>Date création</td>
+    <td>Ajouter</td>
+    <td>Modifier </td>
+    <td>Suprimer</td>
+  </tr>
+  </thead>
+  <tbody>
+    @for (item of projectsig();track $index){
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.date_creation}}</td>
+
+        <td><button (click)="ajout()">add</button></td>
+        <td><button (click)="getprjt(item.id)">update</button></td>
+        <td><button (click)="deletepr(item)">delete</button></td>
+      </tr>
+    }
+  </tbody>
+</table>

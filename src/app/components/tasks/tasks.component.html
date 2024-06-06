@@ -1,0 +1,36 @@
+<p>tasks works!</p>
+
+<form [formGroup]="tskform" class="from-class">
+
+  <input  type="text"  [value]="task?.Name"  placeholder="Tâche"  formControlName="tname">
+  @for (item of projects;track $index){
+    <input type="radio"  [value]="item||task?.projet" formControlName="projet">{{item.name}}
+  }
+
+
+  @if (!updated){
+    <button type="submit"  (click)="addtask()">Ajouter</button>}
+  @else {
+    <button type="submit"  (click)="update(task,task!.id)">Modifier</button>
+  }
+</form>
+
+<table>
+  <thead>
+  <tr>
+    <th>nom tache</th>
+    <th>Action-Delete</th>
+    <th>Action-Modifier</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    @for (item of tasks;track $index){
+      <tr>
+        <td>{{item.Name}}</td>
+        <td><button (click)="deletetask(item.id)">Delete</button></td>
+        <td><button (click)="gettsk(item?.id||null)">Update task</button></td>
+      </tr>
+    }
+  </tbody>
+</table>

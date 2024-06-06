@@ -1,0 +1,14 @@
+table,th,td,tr{
+  border: blue solid 1px;
+}
+button{
+  margin-left: 2%;
+}
+form{
+  display: grid;
+}
+p{
+  text-align: center;
+  font-size: 25px ;
+  font-weight: bold;
+}
